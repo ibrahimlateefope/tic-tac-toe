@@ -1,0 +1,32 @@
+{
+	"name": "tic-tac-toe",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ibrahimlateefope/tic-tac-toe.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/ibrahimlateefope/tic-tac-toe/issues"
+	},
+	"homepage": "https://github.com/ibrahimlateefope/tic-tac-toe#readme",
+	"devDependencies": {
+		"vite": "^8.3.5",
+		"vitest": "^5.0.5"
+	},
+	"type": "module",
+	"scripts": {
+		"dev": "vite --host",
+		"build": "vite build ",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	}
+}
