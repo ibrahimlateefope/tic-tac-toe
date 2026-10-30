@@ -29,3 +29,13 @@ describe("GameRules.getWinner", () => {
     expect(GameRules.getWinner(board)).toBe(null);
   });
 });
+describe("GameRules.isDraw", () => {
+  it("detects a draw", () => {
+    const board = ["X", "O", "X", "X", "O", "O", "O", "X", "X"];
+    expect(GameRules.isDraw(board)).toBe(true);
+  });
+  it("does not call a full board a draw when someone won", () => {
+    const board = ["X", "X", "O", "O", "X", "X", "O", "O", "O"];
+    expect(GameRules.isDraw(board)).toBe(false);
+  });
+});

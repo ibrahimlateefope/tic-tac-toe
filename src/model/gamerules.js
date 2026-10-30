@@ -15,10 +15,17 @@ export const GameRules = (() => {
         return board[a];
       }
     }
+
     return null;
   };
-
+  const isBoardFull = (board) => {
+    return board.every((item) => item !== "");
+  };
+  const isDraw = (board) => {
+   return isBoardFull(board) && getWinner(board) === null;
+  };
   return {
     getWinner,
+    isDraw,
   };
 })();
