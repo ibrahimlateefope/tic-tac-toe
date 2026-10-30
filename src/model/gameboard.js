@@ -5,10 +5,8 @@ export const Gameboard = (() => {
   };
   const placeMark = (index, marker) => {
     if (marker !== "X" && marker !== "O") return false;
-    if (board[index] !== "") {
-      return false;
-    }
-    if (index > 0 && index >= board.length) return false;
+    if (index < 0 || index >= board.length) return false;
+    if (board[index] !== "") return false;
     board[index] = marker;
     return true;
   };

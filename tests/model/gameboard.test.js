@@ -26,6 +26,10 @@ describe("Gameboard", () => {
       expect(Gameboard.placeMark(-1, "O")).toBe(false);
       expect(Gameboard.placeMark(9, "O")).toBe(false);
     });
+    it("rejects an invalid marker", () => {
+      expect(Gameboard.placeMark(0, "Y")).toBe(false);
+      expect(Gameboard.getBoard()[0]).toBe("");
+    });
   });
 });
 /*
