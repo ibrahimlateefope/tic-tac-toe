@@ -19,10 +19,10 @@ export const GameRules = (() => {
     return null;
   };
   const isBoardFull = (board) => {
-    return board.every((item) => item !== "");
+    return board.every((cell) => cell !== "");
   };
   const isDraw = (board) => {
-   return isBoardFull(board) && getWinner(board) === null;
+    return isBoardFull(board) && getWinner(board) === null;
   };
   return {
     getWinner,

@@ -38,4 +38,8 @@ describe("GameRules.isDraw", () => {
     const board = ["X", "X", "O", "O", "X", "X", "O", "O", "O"];
     expect(GameRules.isDraw(board)).toBe(false);
   });
+  it("does not call an unfinished game a draw", () => {
+    const board = ["", "X", "X", "O", "", "", "O", "", ""];
+    expect(GameRules.isDraw(board)).toBe(false);
+  });
 });
