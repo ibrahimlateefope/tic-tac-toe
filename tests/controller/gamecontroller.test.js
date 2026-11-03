@@ -1,0 +1,25 @@
+import { describe, it, expect, beforeEach } from "vitest";
+import { GameController } from "../../src/controller/gamecontroller";
+import { Gameboard } from "../../src/model/gameboard.js";
+describe("GameController", () => {
+  beforeEach(() => {
+    GameController.start("Ibrahim", "Ayo");
+  });
+  it("gets current player's marker", () => {
+    expect(GameController.getCurrentPlayer().getMarker()).toBe("X");
+  });
+  it("plays current player's marker", () => {
+    GameController.playRound(0);
+    expect(Gameboard.getBoard()[0]).toBe("X");
+  });
+  it("switches to the other player's marker after a valid round", () => {
+    GameController.playRound(3);
+    GameController.playRound(0);
+    expect(Gameboard.getBoard()[0]).toBe("O");
+  });
+  it("keeps the same player's turn after an invalid move", () => {
+    GameController.playRound(0);
+    GameController.playRound(0);
+    expect(GameController.getCurrentPlayer().getMarker()).toBe("O");
+  });
+});
