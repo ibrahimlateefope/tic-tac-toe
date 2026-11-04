@@ -51,15 +51,15 @@ describe("GameController", () => {
   });
   it("starts a fresh game after start()", () => {
     play(0, 4, 3, 5, 6);
-    GameController.start();
+    GameController.start("A", "B");
     expect(GameController.playRound(0).valid).toBe(true);
   });
-  it("reports an ordinary move as playing",()=>{
-    const result=GameController.playRound(0)
+  it("reports an ordinary move as playing", () => {
+    const result = GameController.playRound(0);
     expect(result).toEqual({
-      valid:true,
-      status:"playing",
-      winner:null
-    })
-  })
+      valid: true,
+      status: "playing",
+      winner: null,
+    });
+  });
 });

@@ -2,29 +2,27 @@ import { Gameboard } from "../model/gameboard.js";
 import { createPlayer } from "../model/player.js";
 import { GameRules } from "../model/gamerules.js";
 export const GameController = (() => {
-  let player = [];
+  let players = [];
   let currentPlayerIndex = 0;
   let status = "playing";
   const start = (name1, name2) => {
-    player = [createPlayer(name1, "X"), createPlayer(name2, "O")];
+    players = [createPlayer(name1, "X"), createPlayer(name2, "O")];
     Gameboard.reset();
     currentPlayerIndex = 0;
     status = "playing";
   };
-  const getCurrentPlayer = () => player[currentPlayerIndex];
-  const getMarker = () => {
-    return player[currentPlayerIndex].getMarker();
-  };
+  const getCurrentPlayer = () => players[currentPlayerIndex];
   const playRound = (index) => {
     if (status !== "playing") {
       return { valid: false };
     }
     const success = Gameboard.placeMark(
       index,
-      player[currentPlayerIndex].getMarker(),
+      players[currentPlayerIndex].getMarker(),
     );
     if (!success) return { valid: false };
-    const winner = GameRules.getWinner(Gameboard.getBoard());
+    const board = Gameboard.getBoard();
+    const winner = GameRules.getWinner(board);
     if (winner) {
       status = "won";
       return {
@@ -33,7 +31,7 @@ export const GameController = (() => {
         winner,
       };
     }
-    const draw = GameRules.isDraw(Gameboard.getBoard());
+    const draw = GameRules.isDraw(board);
     if (draw) {
       status = "draw";
       return {
@@ -53,7 +51,6 @@ export const GameController = (() => {
   return {
     start,
     getCurrentPlayer,
-    getMarker,
     playRound,
     getStatus,
   };
