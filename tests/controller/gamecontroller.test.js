@@ -2,6 +2,9 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { GameController } from "../../src/controller/gamecontroller";
 import { Gameboard } from "../../src/model/gameboard.js";
 describe("GameController", () => {
+  const play = (...moves) => {
+    moves.forEach((m) => GameController.playRound(m));
+  };
   beforeEach(() => {
     GameController.start("Ibrahim", "Ayo");
   });
@@ -21,5 +24,23 @@ describe("GameController", () => {
     GameController.playRound(0);
     GameController.playRound(0);
     expect(GameController.getCurrentPlayer().getMarker()).toBe("O");
+  });
+  it("confirms a win for X", () => {
+    play(0, 4, 3, 5);
+    const result = GameController.playRound(6);
+    expect(result).toEqual({
+      valid: true,
+      status: "won",
+      winner: "X",
+    });
+  });
+  it("confirms a draw", () => {
+    play(0, 1, 2, 4, 3, 5, 7, 6);
+    const result = GameController.playRound(8);
+    expect(result).toEqual({
+      valid: true,
+      status: "draw",
+      winner: null,
+    });
   });
 });
