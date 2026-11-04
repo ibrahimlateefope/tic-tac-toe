@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { GameController } from "../../src/controller/gamecontroller";
+import { GameController } from "../../src/controller/gamecontroller.js";
 import { Gameboard } from "../../src/model/gameboard.js";
 describe("GameController", () => {
   const play = (...moves) => {
@@ -43,4 +43,23 @@ describe("GameController", () => {
       winner: null,
     });
   });
+  it("rejects moves after the game is over", () => {
+    play(0, 4, 3, 5, 6);
+    const result = GameController.playRound(8);
+    expect(result).toEqual({ valid: false });
+    expect(Gameboard.getBoard()[8]).toBe("");
+  });
+  it("starts a fresh game after start()", () => {
+    play(0, 4, 3, 5, 6);
+    GameController.start();
+    expect(GameController.playRound(0).valid).toBe(true);
+  });
+  it("reports an ordinary move as playing",()=>{
+    const result=GameController.playRound(0)
+    expect(result).toEqual({
+      valid:true,
+      status:"playing",
+      winner:null
+    })
+  })
 });
