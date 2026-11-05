@@ -4,7 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "vite --host",
+		"build": "vite build ",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"repository": {
 		"type": "git",
@@ -13,20 +16,15 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"type": "commonjs",
+	"type": "module",
 	"bugs": {
 		"url": "https://github.com/ibrahimlateefope/tic-tac-toe/issues"
 	},
 	"homepage": "https://github.com/ibrahimlateefope/tic-tac-toe#readme",
 	"devDependencies": {
+		"@tailwindcss/vite": "^4.3.4",
+		"tailwindcss": "^4.3.4",
 		"vite": "^8.3.5",
 		"vitest": "^5.0.5"
-	},
-	"type": "module",
-	"scripts": {
-		"dev": "vite --host",
-		"build": "vite build ",
-		"test": "vitest run",
-		"test:watch": "vitest"
 	}
 }
