@@ -62,4 +62,8 @@ describe("GameController", () => {
       winner: null,
     });
   });
+  it("exposes the current board", () => {
+  GameController.playRound(0);
+  expect(GameController.getBoard()[0]).toBe("X");
+});
 });

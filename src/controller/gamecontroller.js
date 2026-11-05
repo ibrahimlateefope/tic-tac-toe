@@ -11,6 +11,8 @@ export const GameController = (() => {
     currentPlayerIndex = 0;
     status = "playing";
   };
+  const getStatus = () => status;
+  const getBoard = () => Gameboard.getBoard();
   const getCurrentPlayer = () => players[currentPlayerIndex];
   const playRound = (index) => {
     if (status !== "playing") {
@@ -47,11 +49,11 @@ export const GameController = (() => {
       winner: null,
     };
   };
-  const getStatus = () => status;
   return {
     start,
+    getStatus,
+    getBoard,
     getCurrentPlayer,
     playRound,
-    getStatus,
   };
 })();
