@@ -1,10 +1,12 @@
 import "./style.css";
 import { GameController } from "./controller/gamecontroller.js";
-const app = document.querySelector("#app");
+const status = document.querySelector("#status");
 GameController.start("Ibrahim", "Ayo");
 GameController.playRound(0);
 
-app.textContent = GameController.getBoard()
+status.textContent = "Playing";
+/*app.textContent = GameController.getBoard()
   .map((cell) => cell || ".")
   .join(" | ");
 app.className = "p-4 text-3xl font-bold text-red-500";
+*/
