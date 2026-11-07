@@ -15,7 +15,7 @@ describe("GameController", () => {
     GameController.playRound(0);
     expect(Gameboard.getBoard()[0]).toBe("X");
   });
-  it("switches to the other player's marker after a valid round", () => {
+  it("switches to the other playern's marker after a valid round", () => {
     GameController.playRound(3);
     GameController.playRound(0);
     expect(Gameboard.getBoard()[0]).toBe("O");
@@ -66,4 +66,10 @@ describe("GameController", () => {
   GameController.playRound(0);
   expect(GameController.getBoard()[0]).toBe("X");
 });
+  it("keeps the winner as the current player after a win",()=>{
+    play(0, 4, 3, 5);
+    const result = GameController.playRound(6);
+    
+  expect(GameController.getCurrentPlayer().getName()).toBe("Ibrahim")
+  })
 });

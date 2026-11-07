@@ -1,7 +1,10 @@
 export const DisplayController = (() => {
   const boardHtml = document.querySelector("#board");
-  const renderBoard = (board) => {
+  const emptyBoard = () => {
     boardHtml.textContent = "";
+  };
+  const renderBoard = (board) => {
+    emptyBoard();
     board.forEach((cell, index) => {
       const button = document.createElement("button");
       button.dataset.index = index;
@@ -11,5 +14,13 @@ export const DisplayController = (() => {
       boardHtml.append(button);
     });
   };
-  return { renderBoard };
+  const onCellClick = (handler) => {
+    boardHtml.addEventListener("click", (e) => {
+      const button = e.target.closest("button");
+      if (!button) return;
+      const index = Number(button.dataset.index);
+      handler(index);
+    });
+  };
+  return { emptyBoard, renderBoard, onCellClick };
 })();
