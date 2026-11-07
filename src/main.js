@@ -1,12 +1,8 @@
 import "./style.css";
+import { DisplayController } from "./view/displaycontroller.js";
 import { GameController } from "./controller/gamecontroller.js";
 const status = document.querySelector("#status");
 GameController.start("Ibrahim", "Ayo");
 GameController.playRound(0);
-
+DisplayController.renderBoard(GameController.getBoard());
 status.textContent = "Playing";
-/*app.textContent = GameController.getBoard()
-  .map((cell) => cell || ".")
-  .join(" | ");
-app.className = "p-4 text-3xl font-bold text-red-500";
-*/
