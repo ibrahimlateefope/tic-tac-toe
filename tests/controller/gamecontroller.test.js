@@ -63,13 +63,53 @@ describe("GameController", () => {
     });
   });
   it("exposes the current board", () => {
-  GameController.playRound(0);
-  expect(GameController.getBoard()[0]).toBe("X");
-});
-  it("keeps the winner as the current player after a win",()=>{
+    GameController.playRound(0);
+    expect(GameController.getBoard()[0]).toBe("X");
+  });
+  it("keeps the winner as the current player after a win", () => {
     play(0, 4, 3, 5);
     const result = GameController.playRound(6);
-    
-  expect(GameController.getCurrentPlayer().getName()).toBe("Ibrahim")
-  })
+    expect(GameController.getCurrentPlayer().getName()).toBe("Ibrahim");
+  });
+  describe("scores", () => {
+    it("starts every score at zero", () => {
+      expect(GameController.getScores()).toEqual({ X: 0, O: 0, draws: 0 });
+    });
+    it("adds one to the winner's score", () => {
+      play(0, 4, 3, 5, 6);
+      expect(GameController.getScores()).toEqual({ X: 1, O: 0, draws: 0 });
+    });
+    it("adds one to the draw count", () => {
+      play(0, 1, 2, 4, 3, 5, 7, 6, 8);
+      expect(GameController.getScores()).toEqual({ X: 0, O: 0, draws: 1 });
+    });
+    it("does not score moves after the game is over", () => {
+      play(0, 4, 3, 5, 6);
+      GameController.playRound(8);
+      GameController.playRound(7);
+      expect(GameController.getScores()).toEqual({ X: 1, O: 0, draws: 0 });
+    });
+    it("newRound clears the board and status but keeps the scores", () => {
+      play(0, 4, 3, 5, 6);
+      GameController.newRound();
+      expect(GameController.getBoard()).toEqual([
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ]);
+      expect(GameController.getStatus()).toBe("playing");
+      expect(GameController.getScores()).toEqual({ X: 1, O: 0, draws: 0 });
+    });
+    it("start resets the scores for a brand-new game", () => {
+      play(0, 4, 3, 5, 6);
+      GameController.start("Ibrahim", "Ayo");
+      expect(GameController.getScores()).toEqual({ X: 0, O: 0, draws: 0 });
+    });
+  });
 });

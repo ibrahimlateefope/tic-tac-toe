@@ -1,1 +1,79 @@
 @import "tailwindcss";
+@theme {
+  --color-periwinkle-50: #f0e7fd;
+  --color-periwinkle-100: #e0cffc;
+  --color-periwinkle-200: #c29ff9;
+  --color-periwinkle-300: #a36ff6;
+  --color-periwinkle-400: #843ff3;
+  --color-periwinkle-500: #650ff0;
+  --color-periwinkle-600: #510cc0;
+  --color-periwinkle-700: #3d0990;
+  --color-periwinkle-800: #290660;
+  --color-periwinkle-900: #140330;
+  --color-periwinkle-950: #0e0222;
+
+  --color-indigo-bloom-50: #f0ecf9;
+  --color-indigo-bloom-100: #e1d8f3;
+  --color-indigo-bloom-200: #c3b1e7;
+  --color-indigo-bloom-300: #a58bda;
+  --color-indigo-bloom-400: #8764ce;
+  --color-indigo-bloom-500: #693dc2;
+  --color-indigo-bloom-600: #54319b;
+  --color-indigo-bloom-700: #3f2574;
+  --color-indigo-bloom-800: #2a184e;
+  --color-indigo-bloom-900: #150c27;
+  --color-indigo-bloom-950: #0f091b;
+
+  --color-lavender-mist-50: #f2eafa;
+  --color-lavender-mist-100: #e5d5f6;
+  --color-lavender-mist-200: #ccacec;
+  --color-lavender-mist-300: #b282e3;
+  --color-lavender-mist-400: #9959d9;
+  --color-lavender-mist-500: #7f2fd0;
+  --color-lavender-mist-600: #6626a6;
+  --color-lavender-mist-700: #4c1c7d;
+  --color-lavender-mist-800: #331353;
+  --color-lavender-mist-900: #19092a;
+  --color-lavender-mist-950: #12071d;
+
+  --color-deep-pink-50: #ffe6f3;
+  --color-deep-pink-100: #fecde6;
+  --color-deep-pink-200: #fd9bce;
+  --color-deep-pink-300: #fd68b5;
+  --color-deep-pink-400: #fc369c;
+  --color-deep-pink-500: #fb0484;
+  --color-deep-pink-600: #c90369;
+  --color-deep-pink-700: #97024f;
+  --color-deep-pink-800: #640235;
+  --color-deep-pink-900: #32011a;
+  --color-deep-pink-950: #230112;
+
+  --color-azure-blue-50: #e7effd;
+  --color-azure-blue-100: #cfdffc;
+  --color-azure-blue-200: #9fbff9;
+  --color-azure-blue-300: #6f9ef6;
+  --color-azure-blue-400: #3f7ef3;
+  --color-azure-blue-500: #0f5ef0;
+  --color-azure-blue-600: #0c4bc0;
+  --color-azure-blue-700: #093890;
+  --color-azure-blue-800: #062660;
+  --color-azure-blue-900: #031330;
+  --color-azure-blue-950: #020d22;
+}
+
+@layer base {
+  ::selection {
+    background-color: var(--color-indigo-bloom-200);
+    color: var(--color-indigo-bloom-900);
+  }
+}
+
+@layer components {
+  #status[data-status="won"] {
+    @apply bg-deep-pink-500 shadow-deep-pink-200/60;
+  }
+
+  #status[data-status="draw"] {
+    @apply bg-azure-blue-500 shadow-azure-blue-200/60;
+  }
+}

@@ -9,14 +9,18 @@ export const GameRules = (() => {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  const getWinner = (board) => {
+  const getWinningLine = (board) => {
     for (const [a, b, c] of WINNING_LINES) {
       if (board[a] !== "" && board[a] === board[b] && board[a] === board[c]) {
-        return board[a];
+        return [a, b, c];
       }
     }
 
     return null;
+  };
+  const getWinner = (board) => {
+    const line = getWinningLine(board);
+    return line ? board[line[0]] : null;
   };
   const isBoardFull = (board) => {
     return board.every((cell) => cell !== "");
@@ -26,6 +30,7 @@ export const GameRules = (() => {
   };
   return {
     getWinner,
+    getWinningLine,
     isDraw,
   };
 })();

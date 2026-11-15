@@ -29,6 +29,16 @@ describe("GameRules.getWinner", () => {
     expect(GameRules.getWinner(board)).toBe(null);
   });
 });
+describe("GameRules.getWinningLine", () => {
+  it("returns the line that won", () => {
+    const board = ["X", "O", "O", "X", "", "", "X", "", ""];
+    expect(GameRules.getWinningLine(board)).toEqual([0, 3, 6]);
+  });
+  it("returns null without a winning line", () => {
+    const board = ["X", "O", "O", "X", "", "", "", "", ""];
+    expect(GameRules.getWinningLine(board)).toBe(null);
+  });
+});
 describe("GameRules.isDraw", () => {
   it("detects a draw", () => {
     const board = ["X", "O", "X", "X", "O", "O", "O", "X", "X"];
